@@ -1,2 +1,8 @@
 Jenkins.instance.getItemByFullName('JobName').builds.findAll { it.number > 10 && it.number < 1717 }.each { it.delete() }
 
+item = Jenkins.instance.getItemByFullName('JobName')
+//THIS WILL REMOVE ALL BUILD HISTORY
+item.builds.each() { build ->
+  build.delete()
+}
+item.updateNextBuildNumber(1)
